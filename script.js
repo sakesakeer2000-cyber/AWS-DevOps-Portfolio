@@ -155,3 +155,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+// ===== Smooth reveal animation on scroll =====
+document.addEventListener("DOMContentLoaded", () => {
+    const elements = document.querySelectorAll(
+        ".section, .project-card, .certification-card, .skill-card"
+    );
+
+    // Avoid hiding content when animations are unsupported
+    if (
+        !("IntersectionObserver" in window) ||
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+        return;
+    }
+
+    const observer = new IntersectionObserver(
+        (entries, currentObserver) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("is-visible");
+                    currentObserver.unobserve(entry.target);
+                }
+            });
+        },
+        {
+            threshold: 0.12,
+            rootMargin: "0px 0px -35px 0px"
+        }
+    );
+
+    elements.forEach((element) => {
+        element.classList.add("js-reveal");
+        observer.observe(element);
+    });
+});

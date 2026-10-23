@@ -1676,3 +1676,70 @@ footer p {
         font-size: 1.25rem;
     }
 }
+
+/* ===== Smooth scrolling ===== */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 85px;
+}
+
+/* ===== Smooth section reveal ===== */
+.js-reveal {
+    opacity: 0;
+    transform: translateY(22px);
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+}
+
+.js-reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== Card hover animation ===== */
+.project-card,
+.certification-card,
+.skill-card {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.project-card:hover,
+.certification-card:hover,
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+/* ===== Smooth links and buttons ===== */
+a,
+button {
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+/* ===== Accessibility: respect reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .js-reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
