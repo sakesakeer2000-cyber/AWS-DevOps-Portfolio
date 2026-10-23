@@ -1379,3 +1379,215 @@ footer p {
         height: 225px;
     }
 }
+
+/* Certifications Section */
+.certifications {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.certifications .section-description {
+    margin: 15px 0 35px;
+    opacity: 0.8;
+}
+
+.certificate-card {
+    max-width: 850px;
+    margin: 30px auto;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    text-align: left;
+    border-radius: 16px;
+    border: 1px solid rgba(128, 128, 128, 0.35);
+}
+
+.certificate-image {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.certificate-details h3 {
+    margin-top: 0;
+}
+
+.certificate-button {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid currentColor;
+}
+
+.certificate-button:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .certificate-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .certificate-image {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Make the View Certificate link visible */
+.certificate-button {
+    display: inline-block !important;
+    background-color: #2563eb;
+    color: #ffffff !important;
+    padding: 12px 22px;
+    margin-top: 15px;
+    border-radius: 8px;
+    text-decoration: none !important;
+    font-weight: bold;
+    cursor: pointer;
+    visibility: visible;
+    opacity: 1;
+}
+
+.certificate-button:hover {
+    background-color: #1d4ed8;
+    color: #ffffff !important;
+}
+
+/* =========================================
+   CERTIFICATIONS SECTION
+========================================= */
+
+#certifications {
+    padding: 80px 20px;
+    scroll-margin-top: 90px;
+}
+
+#certifications .container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+#certifications .section-label {
+    text-align: center;
+}
+
+#certifications .section-title {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#certifications .section-description {
+    text-align: center;
+    margin: 15px 0 35px;
+    line-height: 1.7;
+    opacity: 0.85;
+}
+
+.certificate-card {
+    max-width: 900px;
+    margin: 30px auto 0;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    text-align: left;
+
+    background: linear-gradient(
+        145deg,
+        rgba(17, 31, 50, 0.95),
+        rgba(8, 16, 30, 0.98)
+    );
+
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 18px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.certificate-image {
+    display: block;
+    width: 320px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.certificate-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.certificate-details h3 {
+    margin: 0 0 18px;
+    font-size: 24px;
+    line-height: 1.4;
+    color: #f8fafc;
+}
+
+.certificate-details p {
+    margin: 10px 0;
+    line-height: 1.7;
+    color: #cbd5e1;
+}
+
+.certificate-tag {
+    color: #38bdf8 !important;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 13px;
+}
+
+.certificate-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 22px;
+
+    background: #38bdf8;
+    color: #07111f !important;
+
+    border: 1px solid #38bdf8;
+    border-radius: 8px;
+
+    font-weight: 700;
+    text-decoration: none !important;
+
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.certificate-button:hover {
+    background: #7dd3fc;
+    transform: translateY(-2px);
+}
+
+/* Mobile and tablet responsive layout */
+
+@media (max-width: 700px) {
+    #certifications {
+        padding: 55px 16px;
+    }
+
+    .certificate-card {
+        flex-direction: column;
+        align-items: center;
+        padding: 22px;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .certificate-image {
+        width: 100%;
+        max-width: 380px;
+    }
+
+    .certificate-details h3 {
+        font-size: 21px;
+    }
+}
