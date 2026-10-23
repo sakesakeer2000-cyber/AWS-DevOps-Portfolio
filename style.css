@@ -1050,44 +1050,6 @@ footer p {
     font-size: 12px;
 }
 
-/* =========================
-   ANIMATIONS
-========================= */
-
-@keyframes fadeUp {
-
-    from {
-        opacity: 0;
-        transform: translateY(25px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes heroGlow {
-
-    from {
-        transform: translate(0, 0) scale(1);
-    }
-
-    to {
-        transform: translate(-50px, 40px) scale(1.2);
-    }
-}
-
-@keyframes heroGlowTwo {
-
-    from {
-        transform: translate(0, 0) scale(1);
-    }
-
-    to {
-        transform: translate(50px, -40px) scale(1.15);
-    }
-}
 
 /* =========================
    SCROLL REVEAL
@@ -1736,6 +1698,115 @@ button {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+
+    .js-reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* ========================================
+   PREMIUM PORTFOLIO MOTION
+======================================== */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* Smooth reveal */
+.js-reveal {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+    transition:
+        opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js-reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+/* Premium cards */
+.project-card,
+.certification-card,
+.skill-card {
+    position: relative;
+    transition:
+        transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        box-shadow 350ms ease,
+        border-color 350ms ease;
+    will-change: auto;
+}
+
+.project-card:hover,
+.certification-card:hover,
+.skill-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(42, 190, 255, 0.55);
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.22),
+        0 0 18px rgba(42, 190, 255, 0.07);
+}
+
+/* Certificate image */
+.certificate-image {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    transition: transform 350ms ease;
+}
+
+.certificate-image-container {
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.certificate-image-container:hover .certificate-image {
+    transform: scale(1.025);
+}
+
+/* Buttons and links */
+a,
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid #2abfff;
+    outline-offset: 4px;
+}
+
+/* Avoid unwanted motion on smaller devices */
+@media (hover: none) {
+    .project-card:hover,
+    .certification-card:hover,
+    .skill-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
     }
 
     .js-reveal {

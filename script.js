@@ -156,37 +156,54 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-// ===== Smooth reveal animation on scroll =====
-document.addEventListener("DOMContentLoaded", () => {
-    const elements = document.querySelectorAll(
-        ".section, .project-card, .certification-card, .skill-card"
-    );
 
-    // Avoid hiding content when animations are unsupported
-    if (
-        !("IntersectionObserver" in window) ||
-        window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
+/* Premium scroll reveal */
+document.addEventListener("DOMContentLoaded", () => {
+    const reduceMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    const selectors = [
+        ".section",
+        ".project-card",
+        ".certification-card",
+        ".skill-card"
+    ];
+
+    const elements = document.querySelectorAll(selectors.join(","));
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
         return;
     }
 
     const observer = new IntersectionObserver(
-        (entries, currentObserver) => {
+        (entries, observerInstance) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add("is-visible");
-                    currentObserver.unobserve(entry.target);
+                    observerInstance.unobserve(entry.target);
                 }
             });
         },
         {
-            threshold: 0.12,
-            rootMargin: "0px 0px -35px 0px"
+            threshold: 0.08,
+            rootMargin: "0px 0px -30px 0px"
         }
     );
 
     elements.forEach((element) => {
         element.classList.add("js-reveal");
-        observer.observe(element);
+
+        // Keep content visible if it is already in the viewport.
+        const rect = element.getBoundingClientRect();
+        const alreadyVisible =
+            rect.top < window.innerHeight && rect.bottom > 0;
+
+        if (alreadyVisible) {
+            element.classList.add("is-visible");
+        } else {
+            observer.observe(element);
+        }
     });
 });
+
